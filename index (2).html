@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Martina Burgisi – Vision for autonomous space systems</title>
+<meta name="description" content="Martina Burgisi: computer vision and multimodal perception for autonomous space systems, from lunar rover rock detection to spacecraft docking.">
+<!--
+  BEFORE PUBLISHING, search this file for "[" and replace the two placeholders:
+  [Conference name, year], [Poster PDF link], and the [Caption] / [Describe ...] texts in the gallery.
+  Add photo.jpg for your portrait and your pictures/videos in a "media" folder.
+  Slides whose file is missing are skipped, and the whole gallery stays hidden until at least one file loads.
+  When the paper is out, delete the "to appear" lines and uncomment the DOI block.
+-->
+<style>
+  :root {
+    --bg: #f3f6f8;
+    --surface: #ffffff;
+    --ink: #0d2430;
+    --muted: #546975;
+    --line: #cfdae0;
+    --navy: #003247;
+    --accent: #0079b0;
+    --accent-ink: #ffffff;
+    --soft: #dfeaf0;
+    --rock: #8aa0ac;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #08161d;
+      --surface: #0f2430;
+      --ink: #e7eff3;
+      --muted: #9db2bd;
+      --line: #23404f;
+      --navy: #e7eff3;
+      --accent: #4cc3f5;
+      --accent-ink: #04202d;
+      --soft: #14303d;
+      --rock: #4f6977;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.5rem 4rem; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 1.75rem; }
+  .portrait {
+    position: relative;
+    flex: none;
+    width: 9.5rem; height: 9.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid; place-items: center;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    color: var(--navy);
+    font-size: 2.6rem; font-weight: 700; letter-spacing: -.02em;
+  }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 36rem) {
+    .top { flex-direction: column-reverse; align-items: flex-start; }
+    .portrait { width: 7.5rem; height: 7.5rem; font-size: 2.1rem; }
+  }
+  h1 {
+    margin: 0 0 .35rem;
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -.03em;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .role { margin: 0; color: var(--muted); font-size: 1.125rem; }
+  .horizon { display: block; width: 100%; height: auto; margin: 2.25rem 0 2rem; color: var(--rock); }
+  .horizon .box { stroke: var(--accent); }
+  .horizon .tag { fill: var(--accent); }
+  .horizon .tagtext { fill: var(--accent-ink); }
+  .lede { font-size: 1.3rem; line-height: 1.5; margin: 0 0 3rem; max-width: 36rem; }
+  h2 { font-size: 1.5rem; letter-spacing: -.01em; margin: 3rem 0 1rem; color: var(--navy); }
+  h3 { font-size: 1.15rem; margin: 0 0 .4rem; line-height: 1.35; }
+  .item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 1.5rem 1.5rem 1.4rem;
+    margin: 0 0 1.25rem;
+  }
+  .meta { margin: 0 0 .9rem; color: var(--muted); font-size: .98rem; }
+  .status {
+    display: inline-block;
+    margin: 0 0 .9rem;
+    padding: .2rem .7rem;
+    border-radius: 999px;
+    background: var(--soft);
+    color: var(--navy);
+    font-size: .92rem;
+    font-weight: 600;
+  }
+  .item p { margin: 0 0 .9rem; }
+  .item p:last-child { margin-bottom: 0; }
+  a { color: var(--accent); text-underline-offset: .2em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .btn {
+    display: inline-block;
+    padding: .55rem 1.1rem;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .btn:hover { filter: brightness(1.08); }
+  .contact { list-style: none; padding: 0; margin: 0; }
+  .contact li { margin: 0 0 .4rem; }
+  .sketch { margin: 1.1rem 0 1.2rem; }
+  .sketch .ax { stroke: var(--accent); fill: none; stroke-width: 3; stroke-linecap: round; }
+  .sketch .kp { stroke: var(--accent); stroke-width: 2.5; fill: var(--surface); }
+  .sketch .grid { stroke: var(--surface); stroke-width: 2; }
+  .sketch .approach { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 7; fill: none; }
+  .flow { list-style: none; margin: 0 0 1.1rem; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+  .flow li {
+    position: relative;
+    background: var(--soft);
+    border-radius: 10px;
+    padding: .8rem .85rem;
+    font-size: .92rem;
+    line-height: 1.35;
+  }
+  .flow strong { display: block; color: var(--navy); font-size: .98rem; margin-bottom: .15rem; }
+  .flow li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%; right: -.78rem;
+    width: .5rem; height: .5rem;
+    border-top: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .flow li:last-child { background: var(--accent); color: var(--accent-ink); }
+  .flow li:last-child strong { color: var(--accent-ink); }
+  @media (max-width: 40rem) {
+    .flow { grid-template-columns: 1fr; gap: 1.2rem; }
+    .flow li:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -.8rem; transform: translateX(-50%) rotate(135deg); }
+  }
+  .gallery[hidden] { display: none; }
+  .track {
+    display: flex; gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    border-radius: 14px;
+  }
+  .track:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .slide { flex: 0 0 100%; margin: 0; scroll-snap-align: start; }
+  .slide img, .slide video {
+    display: block; width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: #000;
+  }
+  .slide video { object-fit: contain; }
+  .slide figcaption { margin-top: .6rem; color: var(--muted); font-size: .98rem; }
+  .controls { display: flex; align-items: center; justify-content: flex-end; gap: .75rem; margin-top: .75rem; color: var(--muted); font-size: .95rem; }
+  .controls button {
+    width: 2.6rem; height: 2.6rem;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--navy);
+    font-size: 1.4rem; line-height: 1;
+    cursor: pointer;
+  }
+  .controls button:hover { border-color: var(--accent); color: var(--accent); }
+  .controls button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { .track { scroll-behavior: auto; } }
+  footer { margin-top: 3.5rem; color: var(--muted); font-size: .92rem; }
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <div>
+      <h1>Martina Burgisi</h1>
+      <p class="role">Post-graduate Research Assistant, School of Aerospace Engineering, Sapienza University of Rome</p>
+    </div>
+    <!-- Your photo: upload a roughly square image named photo.jpg next to index.html.
+         Until it is there, the initials are shown instead. -->
+    <div class="portrait" aria-label="Portrait of Martina Burgisi">
+      <span aria-hidden="true">MB</span>
+      <img src="photo.jpg" alt="Portrait of Martina Burgisi" onerror="this.remove()">
+    </div>
+  </header>
+
+  <svg class="horizon" viewBox="0 0 800 150" role="img" aria-label="Lunar horizon with a rock marked by a detection box">
+    <path d="M0 112 C90 96 170 118 270 106 C380 92 450 120 560 108 C650 98 730 112 800 102" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M0 140 C120 126 220 146 340 134 C470 122 560 146 680 134 C740 128 780 134 800 132" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+    <polygon points="86,108 98,92 116,98 122,110" fill="currentColor"/>
+    <polygon points="210,114 222,102 236,106 240,116" fill="currentColor"/>
+    <polygon points="352,100 362,88 378,92 384,102" fill="currentColor" opacity=".7"/>
+    <polygon points="560,112 574,90 596,96 604,112" fill="currentColor"/>
+    <polygon points="690,106 698,96 712,100 716,108" fill="currentColor" opacity=".7"/>
+    <rect class="box" x="552" y="80" width="60" height="40" rx="3" fill="none" stroke-width="3"/>
+    <rect class="tag" x="552" y="58" width="82" height="22" rx="3"/>
+    <text class="tagtext" x="560" y="74" font-size="14" font-weight="700" font-family="system-ui, -apple-system, Arial, sans-serif">rock 0.95</text>
+  </svg>
+
+  <p class="lede">I design vision-based deep learning and sensor fusion for autonomous space systems. Today that means spacecraft docking; before, it meant finding rocks for a lunar rover when sunlight turns camera images into glare and deep shadow.</p>
+
+  <h2>Current research</h2>
+
+  <article class="item">
+    <h3>FIS2: advanced safe in-orbit docking architecture</h3>
+    <p class="meta">Space Systems Research Group, supervised by Prof. Federica Angeletti</p>
+    <p>Vision-based 6-DoF pose estimation and sensor fusion for autonomous rendezvous and docking, built to stay accurate under harsh spaceborne illumination.</p>
+    <svg class="horizon sketch" viewBox="0 0 800 170" role="img" aria-label="A small spacecraft approaching a target satellite, with a pose frame and keypoints marked on the target">
+      <circle cx="40" cy="30" r="2" fill="currentColor" opacity=".6"/>
+      <circle cx="250" cy="22" r="1.8" fill="currentColor" opacity=".5"/>
+      <circle cx="330" cy="140" r="2" fill="currentColor" opacity=".5"/>
+      <circle cx="70" cy="140" r="1.8" fill="currentColor" opacity=".6"/>
+      <circle cx="700" cy="40" r="2" fill="currentColor" opacity=".6"/>
+      <circle cx="750" cy="120" r="1.8" fill="currentColor" opacity=".5"/>
+      <path d="M0 166 C220 156 420 164 800 154" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+      <rect x="126" y="44" width="32" height="26" rx="2" fill="currentColor" opacity=".7"/>
+      <rect x="126" y="110" width="32" height="26" rx="2" fill="currentColor" opacity=".7"/>
+      <rect x="110" y="74" width="64" height="32" rx="5" fill="currentColor"/>
+      <circle cx="177" cy="90" r="5" fill="var(--accent)"/>
+      <path class="approach" d="M190 90 H470"/>
+      <rect x="556" y="18" width="38" height="40" rx="2" fill="currentColor" opacity=".7"/>
+      <line class="grid" x1="575" y1="18" x2="575" y2="58"/>
+      <rect x="556" y="114" width="38" height="40" rx="2" fill="currentColor" opacity=".7"/>
+      <line class="grid" x1="575" y1="114" x2="575" y2="154"/>
+      <rect x="540" y="62" width="70" height="48" rx="6" fill="currentColor"/>
+      <rect x="528" y="78" width="12" height="24" rx="2" fill="currentColor" opacity=".7"/>
+      <circle class="kp" cx="540" cy="62" r="5"/>
+      <circle class="kp" cx="610" cy="62" r="5"/>
+      <circle class="kp" cx="610" cy="110" r="5"/>
+      <circle class="kp" cx="540" cy="110" r="5"/>
+      <path class="ax" d="M528 90 V46"/>
+      <path class="ax" d="M528 90 L498 114"/>
+      <path class="ax" d="M528 90 H480"/>
+      <circle cx="528" cy="90" r="4" fill="var(--accent)"/>
+      <rect class="tag" x="404" y="26" width="104" height="24" rx="3"/>
+      <text class="tagtext" x="413" y="43" font-size="14" font-weight="700" font-family="system-ui, -apple-system, Arial, sans-serif">pose 6-DoF</text>
+    </svg>
+    <ol class="flow" aria-label="Pipeline overview">
+      <li><strong>Camera images</strong>Harsh spaceborne illumination</li>
+      <li><strong>Deep learning</strong>Vision-based 6-DoF pose estimation</li>
+      <li><strong>Sensor fusion</strong>Complementary measurements</li>
+      <li><strong>Docking-ready pose</strong>Autonomous, safe rendezvous</li>
+    </ol>
+    <p>The question is the same as in my lunar work: perception that stays reliable when lighting is extreme.</p>
+    <p><a href="https://spacesystemsresearchgroup.vercel.app/pages/people/post-graduates/burgisi.html">Profile at the research group</a></p>
+  </article>
+
+  <h2>Lunar rover perception</h2>
+  <p class="meta">Done for my MSc thesis at the University of Pisa, as a visiting researcher at the European Astronaut Centre (ESA) in Cologne, within the Spaceship Team.</p>
+
+  <article class="item">
+    <h3>Domain-Aware Curriculum Learning for Lunar Rover Rock Detection Under Realistic Illumination Conditions</h3>
+    <p class="meta">Poster presented at [Conference name, year]</p>
+    <p>A YOLO-based rock detector for the rover Odin, trained with a curriculum that moves from generic data to indoor lighting and then to polar-like sunlight. Adding depth to the RGB image through a mid-fusion network keeps detection reliable where appearance alone fails. Tested at the LUNA Analog Facility in Cologne.</p>
+    <p><a class="btn" href="[Poster PDF link]">Download the poster</a></p>
+  </article>
+
+  <article class="item">
+    <h3>YOLO-based Multimodal Rock Detection for a Lunar Rover with Sim-To-Real Domain Bridging</h3>
+    <p class="meta">M. Burgisi, A. Bose, L. Ostrogovich, A. Cowley, M. G. C. A. Cimino</p>
+    <p class="status">Full paper, to appear</p>
+    <p>This is the full version of the work in the poster, published under a different title. It adds the hybrid dataset (real, synthetic and diffusion-stylized images), the ablations on where to fuse depth, and the latency analysis.</p>
+    <p>To appear in [Conference name, year]. The link will be added here after publication.</p>
+    <!--
+    After publication, replace the two lines above with:
+    <p><a class="btn" href="https://doi.org/YOUR-DOI">Read the paper</a></p>
+    -->
+  </article>
+
+  <section id="gallery" class="gallery" aria-roledescription="carousel" aria-label="Photos and videos" hidden>
+    <h2>Thesis and research in pictures</h2>
+    <!-- Add or remove <figure class="slide"> blocks. Put files in the "media" folder.
+         Images: <img src="media/name.jpg" alt="..." onerror="dropSlide(this)">
+         Videos: <video src="media/name.mp4" controls preload="metadata" playsinline onerror="dropSlide(this)"></video> -->
+    <div class="track" id="track" tabindex="0">
+      <figure class="slide">
+        <img src="media/thesis-1.jpg" alt="[Describe the photo]" loading="lazy" onerror="dropSlide(this)">
+        <figcaption>[Caption]</figcaption>
+      </figure>
+      <figure class="slide">
+        <img src="media/thesis-2.jpg" alt="[Describe the photo]" loading="lazy" onerror="dropSlide(this)">
+        <figcaption>[Caption]</figcaption>
+      </figure>
+      <figure class="slide">
+        <video src="media/thesis-video.mp4" controls preload="metadata" playsinline onerror="dropSlide(this)"></video>
+        <figcaption>[Caption]</figcaption>
+      </figure>
+    </div>
+    <div class="controls" id="controls">
+      <span id="count" aria-live="polite"></span>
+      <button type="button" id="prev" aria-label="Previous slide">&#8249;</button>
+      <button type="button" id="next" aria-label="Next slide">&#8250;</button>
+    </div>
+  </section>
+
+  <h2>Background</h2>
+  <p>MSc in Artificial Intelligence and Data Engineering, University of Pisa, 2026 (110/110).<br>
+  BSc in Computer Engineering, University of Pisa, 2022.</p>
+  <p>My interests: computer vision, multimodal and RGB-D perception, sensor fusion, synthetic data and sim-to-real transfer, autonomous navigation in space.</p>
+
+  <h2>Contact</h2>
+  <ul class="contact">
+    <li>Email: <a href="mailto:martina.burgisi@uniroma1.it">martina.burgisi@uniroma1.it</a></li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/martina-burgisi/">martina-burgisi</a></li>
+    <li>Research group: <a href="https://spacesystemsresearchgroup.vercel.app/pages/team.html">Space Systems Research Group, Sapienza</a></li>
+  </ul>
+
+  <footer>
+    <p>The lunar rover work was developed within the Lunar Rover System project, Spaceship EAC, European Space Agency.</p>
+  </footer>
+</main>
+<script>
+  function updateGallery() {
+    var g = document.getElementById('gallery'), t = document.getElementById('track');
+    if (!g || !t) return;
+    var n = t.querySelectorAll('.slide').length;
+    g.hidden = n === 0;
+    var c = document.getElementById('controls'), k = document.getElementById('count');
+    if (!c || !k) return;
+    c.hidden = n < 2;
+    var i = Math.round(t.scrollLeft / Math.max(t.clientWidth, 1)) + 1;
+    k.textContent = n ? Math.min(i, n) + ' / ' + n : '';
+  }
+  function dropSlide(el) {
+    var s = el.closest('.slide');
+    if (s) s.remove();
+    updateGallery();
+  }
+  window.addEventListener('load', function () {
+    var t = document.getElementById('track');
+    t.addEventListener('scroll', updateGallery, { passive: true });
+    window.addEventListener('resize', updateGallery);
+    document.getElementById('prev').addEventListener('click', function () { t.scrollBy({ left: -t.clientWidth }); });
+    document.getElementById('next').addEventListener('click', function () { t.scrollBy({ left: t.clientWidth }); });
+    updateGallery();
+  });
+</script>
+</body>
+</html>
