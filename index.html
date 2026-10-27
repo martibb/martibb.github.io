@@ -6,10 +6,9 @@
 <title>Martina Burgisi – Vision for autonomous space systems</title>
 <meta name="description" content="Martina Burgisi: computer vision and multimodal perception for autonomous space systems, from lunar rover rock detection to spacecraft docking.">
 <!--
-  BEFORE PUBLISHING, search this file for "[" and replace the two placeholders:
-  [Conference name, year], [Poster PDF link], and the [Caption] / [Describe ...] texts in the gallery.
+  BEFORE PUBLISHING, search this file for "[" and replace the placeholders:
+  [Poster PDF link], and the [Caption] / [Describe ...] texts in the gallery.
   Add photo.jpg for your portrait and your pictures/videos in a "media" folder.
-  Slides whose file is missing are skipped, and the whole gallery stays hidden until at least one file loads.
   When the paper is out, delete the "to appear" lines and uncomment the DOI block.
 -->
 <style>
@@ -79,7 +78,11 @@
   .horizon .box { stroke: var(--accent); }
   .horizon .tag { fill: var(--accent); }
   .horizon .tagtext { fill: var(--accent-ink); }
-  .lede { font-size: 1.3rem; line-height: 1.5; margin: 0 0 3rem; max-width: 36rem; }
+  .horizon .ax { stroke: var(--accent); fill: none; stroke-width: 3; stroke-linecap: round; }
+  .horizon .kp { stroke: var(--accent); stroke-width: 2.5; fill: var(--surface); }
+  .horizon .grid { stroke: var(--bg); stroke-width: 2; }
+  .horizon .approach { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 7; fill: none; }
+  .lede { font-size: 1.3rem; line-height: 1.5; margin: 0 0 3rem; max-width: 38rem; }
   h2 { font-size: 1.5rem; letter-spacing: -.01em; margin: 3rem 0 1rem; color: var(--navy); }
   h3 { font-size: 1.15rem; margin: 0 0 .4rem; line-height: 1.35; }
   .item {
@@ -117,36 +120,6 @@
   .btn:hover { filter: brightness(1.08); }
   .contact { list-style: none; padding: 0; margin: 0; }
   .contact li { margin: 0 0 .4rem; }
-  .sketch { margin: 1.1rem 0 1.2rem; }
-  .sketch .ax { stroke: var(--accent); fill: none; stroke-width: 3; stroke-linecap: round; }
-  .sketch .kp { stroke: var(--accent); stroke-width: 2.5; fill: var(--surface); }
-  .sketch .grid { stroke: var(--surface); stroke-width: 2; }
-  .sketch .approach { stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 7; fill: none; }
-  .flow { list-style: none; margin: 0 0 1.1rem; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
-  .flow li {
-    position: relative;
-    background: var(--soft);
-    border-radius: 10px;
-    padding: .8rem .85rem;
-    font-size: .92rem;
-    line-height: 1.35;
-  }
-  .flow strong { display: block; color: var(--navy); font-size: .98rem; margin-bottom: .15rem; }
-  .flow li:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 50%; right: -.78rem;
-    width: .5rem; height: .5rem;
-    border-top: 2px solid var(--accent);
-    border-right: 2px solid var(--accent);
-    transform: translateY(-50%) rotate(45deg);
-  }
-  .flow li:last-child { background: var(--accent); color: var(--accent-ink); }
-  .flow li:last-child strong { color: var(--accent-ink); }
-  @media (max-width: 40rem) {
-    .flow { grid-template-columns: 1fr; gap: 1.2rem; }
-    .flow li:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -.8rem; transform: translateX(-50%) rotate(135deg); }
-  }
   .gallery[hidden] { display: none; }
   .track {
     display: flex; gap: 1rem;
@@ -158,15 +131,15 @@
   }
   .track:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
   .slide { flex: 0 0 100%; margin: 0; scroll-snap-align: start; }
-  .slide img, .slide video {
+  .slide img, .slide video, .slide .placeholder {
     display: block; width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     border-radius: 14px;
     border: 1px solid var(--line);
-    background: #000;
+    background: var(--surface);
   }
-  .slide video { object-fit: contain; }
+  .slide video { object-fit: contain; background: #000; }
   .slide figcaption { margin-top: .6rem; color: var(--muted); font-size: .98rem; }
   .controls { display: flex; align-items: center; justify-content: flex-end; gap: .75rem; margin-top: .75rem; color: var(--muted); font-size: .95rem; }
   .controls button {
@@ -199,106 +172,133 @@
     </div>
   </header>
 
-  <svg class="horizon" viewBox="0 0 800 150" role="img" aria-label="Lunar horizon with a rock marked by a detection box">
-    <path d="M0 112 C90 96 170 118 270 106 C380 92 450 120 560 108 C650 98 730 112 800 102" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M0 140 C120 126 220 146 340 134 C470 122 560 146 680 134 C740 128 780 134 800 132" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
-    <polygon points="86,108 98,92 116,98 122,110" fill="currentColor"/>
-    <polygon points="210,114 222,102 236,106 240,116" fill="currentColor"/>
-    <polygon points="352,100 362,88 378,92 384,102" fill="currentColor" opacity=".7"/>
-    <polygon points="560,112 574,90 596,96 604,112" fill="currentColor"/>
-    <polygon points="690,106 698,96 712,100 716,108" fill="currentColor" opacity=".7"/>
-    <rect class="box" x="552" y="80" width="60" height="40" rx="3" fill="none" stroke-width="3"/>
-    <rect class="tag" x="552" y="58" width="82" height="22" rx="3"/>
-    <text class="tagtext" x="560" y="74" font-size="14" font-weight="700" font-family="system-ui, -apple-system, Arial, sans-serif">rock 0.95</text>
+  <!-- Unified SVG: In-orbit 6-DoF docking above (scaled down), lunar horizon with rock detection and rover below -->
+  <svg class="horizon" viewBox="0 0 800 230" role="img" aria-label="Spacecraft docking in orbit with 6-DoF pose estimation above a lunar horizon with a rock marked by a detection box and a small rover next to it">
+    <!-- Stars -->
+    <circle cx="40" cy="24" r="2" fill="currentColor" opacity=".6"/>
+    <circle cx="240" cy="18" r="1.8" fill="currentColor" opacity=".5"/>
+    <circle cx="330" cy="105" r="2" fill="currentColor" opacity=".5"/>
+    <circle cx="65" cy="110" r="1.8" fill="currentColor" opacity=".6"/>
+    <circle cx="670" cy="30" r="2" fill="currentColor" opacity=".6"/>
+    <circle cx="755" cy="85" r="1.8" fill="currentColor" opacity=".5"/>
+
+    <!-- Scaled-down orbital docking scene (75% size) -->
+    <g transform="translate(88, 16) scale(0.75)">
+      <!-- Chaser spacecraft (left) -->
+      <rect x="106" y="30" width="30" height="24" rx="2" fill="currentColor" opacity=".7"/>
+      <rect x="106" y="92" width="30" height="24" rx="2" fill="currentColor" opacity=".7"/>
+      <rect x="90" y="58" width="60" height="30" rx="5" fill="currentColor"/>
+      <circle cx="153" cy="73" r="4.5" fill="var(--accent)"/>
+
+      <!-- Approach trajectory -->
+      <path class="approach" d="M164 73 H385"/>
+
+      <!-- Target satellite (center-right) -->
+      <rect x="456" y="10" width="34" height="36" rx="2" fill="currentColor" opacity=".7"/>
+      <line class="grid" x1="473" y1="10" x2="473" y2="46"/>
+      <rect x="456" y="100" width="34" height="36" rx="2" fill="currentColor" opacity=".7"/>
+      <line class="grid" x1="473" y1="100" x2="473" y2="136"/>
+      <rect x="440" y="50" width="66" height="46" rx="6" fill="currentColor"/>
+      <rect x="428" y="65" width="12" height="20" rx="2" fill="currentColor" opacity=".7"/>
+
+      <!-- Target keypoints & 6-DoF axes -->
+      <circle class="kp" cx="440" cy="50" r="4.5"/>
+      <circle class="kp" cx="506" cy="50" r="4.5"/>
+      <circle class="kp" cx="506" cy="96" r="4.5"/>
+      <circle class="kp" cx="440" cy="96" r="4.5"/>
+      <path class="ax" d="M428 73 V34"/>
+      <path class="ax" d="M428 73 L400 95"/>
+      <path class="ax" d="M428 73 H384"/>
+      <circle cx="428" cy="73" r="4" fill="var(--accent)"/>
+
+      <!-- Pose tag -->
+      <rect class="tag" x="296" y="10" width="112" height="26" rx="4"/>
+      <text class="tagtext" x="306" y="28" font-size="15.5" font-weight="700" font-family="system-ui, -apple-system, Arial, sans-serif">pose 6-DoF</text>
+    </g>
+
+    <!-- Lunar surface & rocks (bottom) -->
+    <path d="M0 182 C90 166 170 188 270 176 C380 162 450 190 560 178 C650 168 730 182 800 172" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M0 210 C120 196 220 216 340 204 C470 192 560 216 680 204 C740 198 780 204 800 202" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+    <polygon points="86,178 98,162 116,168 122,180" fill="currentColor"/>
+    <polygon points="210,184 222,172 236,176 240,186" fill="currentColor"/>
+    <polygon points="352,170 362,158 378,162 384,172" fill="currentColor" opacity=".7"/>
+    <polygon points="600,182 614,160 636,166 644,182" fill="currentColor"/>
+    <polygon points="710,176 718,166 732,170 736,178" fill="currentColor" opacity=".7"/>
+
+    <!-- Little rover next to the detected rock, facing it -->
+    <g transform="translate(524,148)">
+      <line x1="6" y1="12" x2="2" y2="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <rect x="-6" y="0" width="14" height="5" rx="1" fill="currentColor" opacity=".7" transform="rotate(-18 2 4)"/>
+      <line x1="30" y1="12" x2="30" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <rect x="24" y="-2" width="12" height="6" rx="1.5" fill="currentColor"/>
+      <circle cx="35" cy="1" r="1.6" fill="var(--accent)"/>
+      <rect x="0" y="12" width="40" height="11" rx="2.5" fill="currentColor"/>
+      <circle cx="7" cy="28" r="4.5" fill="currentColor" stroke="var(--bg)" stroke-width="1.5"/>
+      <circle cx="20" cy="28" r="4.5" fill="currentColor" stroke="var(--bg)" stroke-width="1.5"/>
+      <circle cx="33" cy="28" r="4.5" fill="currentColor" stroke="var(--bg)" stroke-width="1.5"/>
+      <circle cx="7" cy="28" r="1.5" fill="var(--bg)"/>
+      <circle cx="20" cy="28" r="1.5" fill="var(--bg)"/>
+      <circle cx="33" cy="28" r="1.5" fill="var(--bg)"/>
+    </g>
+
+    <!-- Rock detection bounding box -->
+    <rect class="box" x="592" y="150" width="60" height="40" rx="3" fill="none" stroke-width="3"/>
+    <rect class="tag" x="592" y="128" width="82" height="22" rx="3"/>
+    <text class="tagtext" x="600" y="144" font-size="14" font-weight="700" font-family="system-ui, -apple-system, Arial, sans-serif">rock 0.95</text>
   </svg>
 
-  <p class="lede">I design vision-based deep learning and sensor fusion for autonomous space systems. Today that means spacecraft docking; before, it meant finding rocks for a lunar rover when sunlight turns camera images into glare and deep shadow.</p>
+  <p class="lede">I design vision-based deep learning and sensor fusion for autonomous space systems. That means guiding spacecraft during in-orbit docking and finding rocks for lunar rovers when sunlight turns camera images into glare and deep shadow.</p>
 
-  <h2>Current research</h2>
+  <h2>In-orbit servicing &amp; docking</h2>
 
   <article class="item">
     <h3>FIS2: advanced safe in-orbit docking architecture</h3>
     <p class="meta">Space Systems Research Group, supervised by Prof. Federica Angeletti</p>
-    <p>Vision-based 6-DoF pose estimation and sensor fusion for autonomous rendezvous and docking, built to stay accurate under harsh spaceborne illumination.</p>
-    <svg class="horizon sketch" viewBox="0 0 800 170" role="img" aria-label="A small spacecraft approaching a target satellite, with a pose frame and keypoints marked on the target">
-      <circle cx="40" cy="30" r="2" fill="currentColor" opacity=".6"/>
-      <circle cx="250" cy="22" r="1.8" fill="currentColor" opacity=".5"/>
-      <circle cx="330" cy="140" r="2" fill="currentColor" opacity=".5"/>
-      <circle cx="70" cy="140" r="1.8" fill="currentColor" opacity=".6"/>
-      <circle cx="700" cy="40" r="2" fill="currentColor" opacity=".6"/>
-      <circle cx="750" cy="120" r="1.8" fill="currentColor" opacity=".5"/>
-      <path d="M0 166 C220 156 420 164 800 154" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
-      <rect x="126" y="44" width="32" height="26" rx="2" fill="currentColor" opacity=".7"/>
-      <rect x="126" y="110" width="32" height="26" rx="2" fill="currentColor" opacity=".7"/>
-      <rect x="110" y="74" width="64" height="32" rx="5" fill="currentColor"/>
-      <circle cx="177" cy="90" r="5" fill="var(--accent)"/>
-      <path class="approach" d="M190 90 H470"/>
-      <rect x="556" y="18" width="38" height="40" rx="2" fill="currentColor" opacity=".7"/>
-      <line class="grid" x1="575" y1="18" x2="575" y2="58"/>
-      <rect x="556" y="114" width="38" height="40" rx="2" fill="currentColor" opacity=".7"/>
-      <line class="grid" x1="575" y1="114" x2="575" y2="154"/>
-      <rect x="540" y="62" width="70" height="48" rx="6" fill="currentColor"/>
-      <rect x="528" y="78" width="12" height="24" rx="2" fill="currentColor" opacity=".7"/>
-      <circle class="kp" cx="540" cy="62" r="5"/>
-      <circle class="kp" cx="610" cy="62" r="5"/>
-      <circle class="kp" cx="610" cy="110" r="5"/>
-      <circle class="kp" cx="540" cy="110" r="5"/>
-      <path class="ax" d="M528 90 V46"/>
-      <path class="ax" d="M528 90 L498 114"/>
-      <path class="ax" d="M528 90 H480"/>
-      <circle cx="528" cy="90" r="4" fill="var(--accent)"/>
-      <rect class="tag" x="404" y="26" width="104" height="24" rx="3"/>
-      <text class="tagtext" x="413" y="43" font-size="14" font-weight="700" font-family="system-ui, -apple-system, Arial, sans-serif">pose 6-DoF</text>
-    </svg>
-    <ol class="flow" aria-label="Pipeline overview">
-      <li><strong>Camera images</strong>Harsh spaceborne illumination</li>
-      <li><strong>Deep learning</strong>Vision-based 6-DoF pose estimation</li>
-      <li><strong>Sensor fusion</strong>Complementary measurements</li>
-      <li><strong>Docking-ready pose</strong>Autonomous, safe rendezvous</li>
-    </ol>
-    <p>The question is the same as in my lunar work: perception that stays reliable when lighting is extreme.</p>
+    <p>Vision-based 6-DoF pose estimation and sensor fusion for autonomous rendezvous and docking, designed to stay accurate under the harsh illumination of space.</p>
     <p><a href="https://spacesystemsresearchgroup.vercel.app/pages/people/post-graduates/burgisi.html">Profile at the research group</a></p>
   </article>
 
   <h2>Lunar rover perception</h2>
-  <p class="meta">Done for my MSc thesis at the University of Pisa, as a visiting researcher at the European Astronaut Centre (ESA) in Cologne, within the Spaceship Team.</p>
+  <p class="meta">Developed during my MSc thesis at the University of Pisa, as a visiting researcher at the European Astronaut Centre (ESA) in Cologne, within the Spaceship Team.</p>
 
   <article class="item">
     <h3>Domain-Aware Curriculum Learning for Lunar Rover Rock Detection Under Realistic Illumination Conditions</h3>
-    <p class="meta">Poster presented at [Conference name, year]</p>
-    <p>A YOLO-based rock detector for the rover Odin, trained with a curriculum that moves from generic data to indoor lighting and then to polar-like sunlight. Adding depth to the RGB image through a mid-fusion network keeps detection reliable where appearance alone fails. Tested at the LUNA Analog Facility in Cologne.</p>
-    <p><a class="btn" href="[Poster PDF link]">Download the poster</a></p>
+    <p class="meta">Presented at iSAIRAS, Cologne, 2026</p>
+    <p>A YOLO-based rock detector for the lunar rover Odin, trained with a curriculum that moves from generic data to indoor lighting and finally to realistic sunlight. A mid-fusion network adds depth to the RGB image, so detection stays reliable even where appearance alone fails.</p>
+    <p><a class="btn" href="media/domain_aware_curriculum_learning_lunar_rover_poster.pdf">Download the poster</a></p>
   </article>
 
   <article class="item">
     <h3>YOLO-based Multimodal Rock Detection for a Lunar Rover with Sim-To-Real Domain Bridging</h3>
     <p class="meta">M. Burgisi, A. Bose, L. Ostrogovich, A. Cowley, M. G. C. A. Cimino</p>
     <p class="status">Full paper, to appear</p>
-    <p>This is the full version of the work in the poster, published under a different title. It adds the hybrid dataset (real, synthetic and diffusion-stylized images), the ablations on where to fuse depth, and the latency analysis.</p>
-    <p>To appear in [Conference name, year]. The link will be added here after publication.</p>
+    <p>The full-length version of the work presented at iSAIRAS as "Domain-Aware Curriculum Learning for Lunar Rover Rock Detection Under Realistic Illumination Conditions", with a complete account of the hybrid dataset (real, synthetic and diffusion-stylized images), ablations on where to fuse depth, and a latency analysis.</p>
+    <p>To appear in IEEE ICAI-TEMS (International Conference on Application of Information Technologies in Engineering, Management and Science), Pisa, 2026. The link will be added here after publication.</p>
     <!--
     After publication, replace the two lines above with:
     <p><a class="btn" href="https://doi.org/YOUR-DOI">Read the paper</a></p>
     -->
   </article>
 
-  <section id="gallery" class="gallery" aria-roledescription="carousel" aria-label="Photos and videos" hidden>
+  <section id="gallery" class="gallery" aria-roledescription="carousel" aria-label="Photos and videos">
     <h2>Thesis and research in pictures</h2>
-    <!-- Add or remove <figure class="slide"> blocks. Put files in the "media" folder.
-         Images: <img src="media/name.jpg" alt="..." onerror="dropSlide(this)">
-         Videos: <video src="media/name.mp4" controls preload="metadata" playsinline onerror="dropSlide(this)"></video> -->
+    <!-- When you have your actual files in the "media" folder, they will load automatically.
+         If a file is missing, replace the fallback onerror or keep these preview cards until ready. -->
     <div class="track" id="track" tabindex="0">
       <figure class="slide">
-        <img src="media/thesis-1.jpg" alt="[Describe the photo]" loading="lazy" onerror="dropSlide(this)">
-        <figcaption>[Caption]</figcaption>
+        <img src="media/luna-1.jpg" alt="[Odin rover inside the ESA LUNA Analog Facility]" loading="lazy"
+             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 500%22><rect width=%22800%22 height=%22500%22 fill=%22%230f2430%22/><text x=%22400%22 y=%22240%22 fill=%22%239db2bd%22 font-family=%22sans-serif%22 font-size=%2222%22 text-anchor=%22middle%22>Add media/thesis-1.jpg</text><text x=%22400%22 y=%22275%22 fill=%22%234cc3f5%22 font-family=%22sans-serif%22 font-size=%2216%22 text-anchor=%22middle%22>(LUNA Facility / Rover Test)</text></svg>'">
+        <figcaption>Odin rover inside the ESA LUNA Analog Facility</figcaption>
       </figure>
       <figure class="slide">
-        <img src="media/thesis-2.jpg" alt="[Describe the photo]" loading="lazy" onerror="dropSlide(this)">
-        <figcaption>[Caption]</figcaption>
+        <img src="media/luna-2.jpg" alt="[Data acquisition campaign at the LUNA Analog Facility]" loading="lazy"
+             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 500%22><rect width=%22800%22 height=%22500%22 fill=%22%230f2430%22/><text x=%22400%22 y=%22240%22 fill=%22%239db2bd%22 font-family=%22sans-serif%2２ font-size=%２２２２%２２ text-anchor=%２２middle%２２>Add media/luna-2.jpg</text><text x=%２２400%２２ y=%２２ twenty-seven-five%２２ fill=%２２% twenty-three cc3f5%２２ font-family=%２２sans-serif%２２ font-size=%２２１６%２２ text-anchor=%２２middle%２２>(Data Acquisition)</text></svg>'">
+        <figcaption>Data acquisition campaign at the LUNA Analog Facility</figcaption>
       </figure>
       <figure class="slide">
-        <video src="media/thesis-video.mp4" controls preload="metadata" playsinline onerror="dropSlide(this)"></video>
-        <figcaption>[Caption]</figcaption>
+        <img src="media/luna-3.jpg" alt="[Data acquisition campaign at the LUNA Analog Facility]" loading="lazy"
+             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 500%22><rect width=%22800%22 height=%22500%22 fill=%22%230f2430%22/><text x=%22400%22 y=%22240%22 fill=%22%239db2bd%22 font-family=%22sans-serif%22 font-size=%2222%22 text-anchor=%22middle%22>Add media/thesis-3.jpg</text><text x=%22400%22 y=%22275%22 fill=%22%234cc3f5%22 font-family=%22sans-serif%22 font-size=%2216%22 text-anchor=%22middle%22>(iSAIRAS 2026 Poster Presentation)</text></svg>'">
+        <figcaption>Data acquisition campaign at the LUNA Analog Facility</figcaption>
       </figure>
     </div>
     <div class="controls" id="controls">
@@ -319,10 +319,7 @@
     <li>LinkedIn: <a href="https://www.linkedin.com/in/martina-burgisi/">martina-burgisi</a></li>
     <li>Research group: <a href="https://spacesystemsresearchgroup.vercel.app/pages/team.html">Space Systems Research Group, Sapienza</a></li>
   </ul>
-
-  <footer>
-    <p>The lunar rover work was developed within the Lunar Rover System project, Spaceship EAC, European Space Agency.</p>
-  </footer>
+  
 </main>
 <script>
   function updateGallery() {
