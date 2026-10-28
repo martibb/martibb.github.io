@@ -298,6 +298,11 @@
         <figcaption>Data acquisition campaign at the LUNA Analog Facility, photo 2</figcaption>
       </figure>
     </div>
+    <div class="controls" id="controls" aria-label="Gallery controls">
+      <button id="prev" type="button" aria-label="Previous photo">&larr;</button>
+      <span id="count" aria-live="polite"></span>
+      <button id="next" type="button" aria-label="Next photo">&rarr;</button>
+    </div>
   </section>
 
   <h2>Background</h2>
@@ -320,26 +325,26 @@
     var n = t.querySelectorAll('.slide').length;
     g.hidden = n === 0;
     var c = document.getElementById('controls'), k = document.getElementById('count');
-    if (!c || !k) return;
-    c.hidden = n < 2;
+    if (c) c.hidden = n < 2;
     var i = Math.round(t.scrollLeft / Math.max(t.clientWidth, 1)) + 1;
-    k.textContent = n ? Math.min(i, n) + ' / ' + n : '';
+    if (k) k.textContent = n ? Math.min(i, n) + ' / ' + n : '';
   }
   function dropSlide(el) {
     var s = el.closest('.slide');
     if (s) s.remove();
     updateGallery();
   }
-  window.addEventListener('load', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     var t = document.getElementById('track');
+    if (!t) return;
     t.addEventListener('scroll', updateGallery, { passive: true });
     window.addEventListener('resize', updateGallery);
-    document.getElementById('prev').addEventListener('click', function () { t.scrollBy({ left: -t.clientWidth }); });
-    document.getElementById('next').addEventListener('click', function () { t.scrollBy({ left: t.clientWidth }); });
+    document.getElementById('prev').addEventListener('click', function () { t.scrollBy({ left: -t.clientWidth, behavior: 'smooth' }); });
+    document.getElementById('next').addEventListener('click', function () { t.scrollBy({ left: t.clientWidth, behavior: 'smooth' }); });
     updateGallery();
   });
 </script>
 <script data-goatcounter="https://lys-tracking.goatcounter.com/count"
-      async src="//gc.zgo.at/count.js"></script>
+      async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
